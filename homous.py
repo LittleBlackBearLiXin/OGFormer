@@ -38,7 +38,6 @@ def Weight_homo_ratio(adjaceny, Y):
     Y=Y.to(DEVICE)
 
     A=torch.where(adjaceny!=0,one, zero)
-    # 将标签向量 L 转换为对角矩阵 Y
     Y=Y+1
     Y = Y.float()
 
@@ -47,7 +46,6 @@ def Weight_homo_ratio(adjaceny, Y):
 
 
     L_matrix =Y.unsqueeze(1).expand_as(A_Y)
-    # 计算带标签的邻接矩阵 B
     B = torch.mm(A, A_Y)
 
     C=torch.where(B==L_matrix,adjaceny,zero)

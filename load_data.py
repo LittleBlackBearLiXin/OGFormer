@@ -171,7 +171,7 @@ def load_chameleon_squirrel_dataset(data_dir, dataset_name):
     print(f"Loading dataset: {dataset_name}")
 
     def load_wiki_new(name):
-        path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}_filtered.npz')  # 修正路径
+        path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}_filtered.npz')  
         data = np.load(path)
 
         node_feat = data['node_features']
@@ -194,7 +194,7 @@ def load_chameleon_squirrel_dataset(data_dir, dataset_name):
         return dataset
 
     def load_hetero_dataset(name):
-        path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}.npz')  # 修正路径
+        path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}.npz')  
         data = np.load(path)
 
         node_feat = data['node_features']
@@ -223,11 +223,11 @@ def load_chameleon_squirrel_dataset(data_dir, dataset_name):
             file_path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}_filtered.npz')
             data = np.load(file_path)
 
-            train_masks = data["train_masks"]  # (10, N)，
+            train_masks = data["train_masks"]  # (10, N)
             val_masks = data["val_masks"]
             test_masks = data["test_masks"]
 
-            N = train_masks.shape[1]  #
+            N = train_masks.shape[1]  
             node_idx = np.arange(N)
 
             print(f"Train mask size: {train_masks.shape}, Expected size: ({N}, )")
@@ -244,7 +244,7 @@ def load_chameleon_squirrel_dataset(data_dir, dataset_name):
 
             for i in range(train_masks.shape[0]):
                 train_mask[:, i] = torch.zeros(N, dtype=torch.bool)
-                train_mask[train_masks[i], i] = 1  #
+                train_mask[train_masks[i], i] = 1  
 
                 #
                 val_mask[:, i] = torch.zeros(N, dtype=torch.bool)
@@ -259,14 +259,14 @@ def load_chameleon_squirrel_dataset(data_dir, dataset_name):
                 "test_mask": test_mask
             })
         elif name in ["roman_empire", "amazon_ratings"]:
-            file_path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}.npz')  #
+            file_path = os.path.join(DATAPATH, f'{data_dir}/{dataset_name}.npz')  
             data = np.load(file_path)
 
-            train_masks = data["train_masks"]  # (10, N)，
-            val_masks = data["val_masks"]  #
-            test_masks = data["test_masks"]  #
+            train_masks = data["train_masks"]  # (10, N)
+            val_masks = data["val_masks"]  
+            test_masks = data["test_masks"]  
 
-            N = train_masks.shape[1]  #
+            N = train_masks.shape[1]  
             node_idx = np.arange(N)
 
             print(f"Train mask size: {train_masks.shape}, Expected size: ({N}, )")

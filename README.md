@@ -12,5 +12,5 @@
 
 #packages: pip install torch-geometric matplotlib scikit-learn seaborn
 
-#To test cora and cite datasets please run: cora-main and cite:main, different devices may have 0.001 error.
+#To test cora and cite datasets please run: cora-main and cite:main.
 
